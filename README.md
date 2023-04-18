@@ -268,18 +268,16 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
   - Response:
     ```
       {
-        "data" [
-          {
-            "type": "tea",
-            "id": "1",
-            "attributes": {
-              "title": "tea name",
-              "description": "describing the tea",
-              "temperature": "30.5 F",
-              "brew_time": "5 minutes"
-            }
+        "data" {
+          "type": "tea",
+          "id": "1",
+          "attributes": {
+            "title": "tea name",
+            "description": "describing the tea",
+            "temperature": "30.5 F",
+            "brew_time": "5 minutes"
           }
-        ]
+        }
       }
     ```
 - PATCH /tea/:id
