@@ -508,11 +508,14 @@ Root directory: 'http://localhost:3000/api/v1'
 
 <!-- CONTACT -->
 ## Developer
+<center>
 
   <img src="https://avatars.githubusercontent.com/u/111591731?v=4" alt="Profile" width="80" height="80"><br>
   Leo Banos Garcia<br>
   [![Github]][GithubLeo-url]
   [![LinkedIn]][LinkedInLeo-url]
+
+</center>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
