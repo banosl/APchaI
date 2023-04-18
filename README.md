@@ -108,7 +108,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
 
 ### Endpoints
 
-- GET customers
+- GET /customers
   - Response:
     - ```
         {
@@ -159,17 +159,337 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
           ]
         }
       ```
-- POST customer/:id
-- PATCH customer/:id
-- DELETE customer/:id
-- GET teas
-- POST tea/:id
-- PATCH tea/:id
-- DELETE tea/:id
-- GET customer/:id/subscriptions
-- POST customer/:id/subscription/:id
-- PATCH customer/:id/subscription/:id
-- DELETE customer/:id/subscription/:id
+- POST /customer
+  - Request Body:
+    - ```
+      {
+        "first_name": "name",
+        "last_name": "name",
+        "email": "name@email",
+        "address": "123 1st St",
+        "city": "City Name",
+        "state": "State Name",
+        "zip_code": "12345",
+      }
+      ```
+  - Response:
+    - ```
+        {
+          "data": {
+            "type": "customer",
+            "id": "1",
+            "attributes": {
+              "first_name": "name",
+              "last_name": "name",
+              "email": "name@email",
+              "address": "123 1st St",
+              "city": "City Name",
+              "state": "State Name",
+              "zip_code": "12345",
+              "timestamps": {
+                "created_at": "2020-07-21T12:09:00Z",
+                "updated_at": "2020-07-21T12:09:00Z"
+              }
+            }
+          }
+        }
+      ```
+- PATCH /customer/:id
+  - Request Body:
+    - ```
+      {
+        "first_name": "new name",
+        "last_name": "new name",
+        "email": "new email",
+        "address": "new address",
+        "city": "new City Name",
+        "state": "new State Name",
+        "zip_code": "new zip code",
+      }
+      ```
+  - Response:
+    - ```
+        {
+          "data": {
+            "type": "customer",
+            "id": "1",
+            "attributes": {
+              "first_name": "name",
+              "last_name": "name",
+              "email": "name@email",
+              "address": "123 1st St",
+              "city": "City Name",
+              "state": "State Name",
+              "zip_code": "12345",
+              "timestamps": {
+                "created_at": "2020-07-21T12:09:00Z",
+                "updated_at": "2020-07-21T12:09:00Z"
+              }
+            }
+          }
+        }
+      ```
+- DELETE /customer/:id
+  - Response:
+    - ```
+        {
+          "status": "200 OK"
+          "message": "Customer deleted successfully"
+          "data": {}
+        }
+      ```
+- GET /teas
+  - Response:
+    ```
+      {
+        "data" [
+          {
+            "type": "tea",
+            "id": "1",
+            "attributes": {
+              "title": "tea name",
+              "description": "describing the tea",
+              "temperature": "30.5 F",
+              "brew_time": "5 minutes"
+            }
+          }
+        ]
+      }
+    ```
+- POST /tea
+  - Request Body:
+    - ```
+        {
+          "title": "tea name",
+          "description": "describing the tea",
+          "temperature": "30.5 F",
+          "brew_time": "5 minutes"
+        }
+      ```
+  - Response:
+    ```
+      {
+        "data" [
+          {
+            "type": "tea",
+            "id": "1",
+            "attributes": {
+              "title": "tea name",
+              "description": "describing the tea",
+              "temperature": "30.5 F",
+              "brew_time": "5 minutes"
+            }
+          }
+        ]
+      }
+    ```
+- PATCH /tea/:id
+  - Request Body:
+    - ```
+        {
+          "title": "new tea name",
+          "description": "change in description",
+          "temperature": "change in temp",
+          "brew_time": "change in brew time"
+        }
+  - Response:
+    ```
+      {
+        "data" [
+          {
+            "type": "tea",
+            "id": "1",
+            "attributes": {
+              "title": "tea name",
+              "description": "describing the tea",
+              "temperature": "30.5 F",
+              "brew_time": "5 minutes"
+            }
+          }
+        ]
+      }
+    ```
+- DELETE /tea/:id
+  - Response:
+    - ```
+        {
+          "status": "200 OK"
+          "message": "Tea deleted successfully"
+          "data": {}
+        }
+      ```
+- GET /customer/:id/subscriptions
+  - Response:
+    - ```
+        {
+          data: {
+            "type": "customer",
+            "id": "1",
+            "attributes": {
+              "first_name": "name",
+              "last_name": "name",
+              "email": "name@email",
+              "address": "123 1st St",
+              "city": "City Name",
+              "state": "State Name",
+              "zip_code": "12345",
+              "timestamps": {
+                "created_at": "2020-07-21T12:09:00Z",
+                "updated_at": "2020-07-21T12:09:00Z"
+              },
+            "relationships": [ 
+              {          
+              "data": {
+                  "type": "subscription",
+                  "id": "1",
+                  "attributes": {
+                    "title": "subscription title",
+                    "price": "$1.00",
+                    "status": "active",
+                    "frequency": "Monthly"
+                  },
+                  "relationships": {
+                    "data": {
+                      "type": "tea",
+                      "id": "1",
+                      "attributes": {
+                        "title": "tea name",
+                        "description": "describing the tea",
+                        "temperature": "30.5 F",
+                        "brew_time": "5 minutes"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ```
+- POST /customer/:id/subscription/:id
+  - Request Body:
+    - ```
+        {
+          "title": "subscription title",
+          "price": "$1.00",
+          "status": "active",
+          "frequency": "Monthly"
+          "tea_name": "Tea selection"
+        }
+      ```
+  - Response:
+    - ```
+        {
+          data: {
+            "type": "customer",
+            "id": "1",
+            "attributes": {
+              "first_name": "name",
+              "last_name": "name",
+              "email": "name@email",
+              "address": "123 1st St",
+              "city": "City Name",
+              "state": "State Name",
+              "zip_code": "12345",
+              "timestamps": {
+                "created_at": "2020-07-21T12:09:00Z",
+                "updated_at": "2020-07-21T12:09:00Z"
+              },
+            "relationships": {          
+              "data": {
+                "type": "subscription",
+                "id": "1",
+                "attributes": {
+                  "title": "subscription title",
+                  "price": "$1.00",
+                  "status": "active",
+                  "frequency": "Monthly"
+                },
+                "relationships": {
+                  "data": {
+                    "type": "tea",
+                    "id": "1",
+                    "attributes": {
+                      "title": "tea name",
+                      "description": "describing the tea",
+                      "temperature": "30.5 F",
+                      "brew_time": "5 minutes"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ```
+- PATCH /customer/:id/subscription/:id
+  - Request Body:
+    - ```
+        {
+          "title": "new subscription title",
+          "price": "new price",
+          "status": "active or cancelled",
+          "frequency": "change in frequency"
+          "tea_name": "change in tea selection"
+        }
+      ```
+  - Response:
+    - ```
+        {
+          data: {
+            "type": "customer",
+            "id": "1",
+            "attributes": {
+              "first_name": "name",
+              "last_name": "name",
+              "email": "name@email",
+              "address": "123 1st St",
+              "city": "City Name",
+              "state": "State Name",
+              "zip_code": "12345",
+              "timestamps": {
+                "created_at": "2020-07-21T12:09:00Z",
+                "updated_at": "2020-07-21T12:09:00Z"
+              },
+            "relationships": {          
+              "data": {
+                "type": "subscription",
+                "id": "1",
+                "attributes": {
+                  "title": "subscription title",
+                  "price": "$1.00",
+                  "status": "active",
+                  "frequency": "Monthly"
+                },
+                "relationships": {
+                  "data": {
+                    "type": "tea",
+                    "id": "1",
+                    "attributes": {
+                      "title": "tea name",
+                      "description": "describing the tea",
+                      "temperature": "30.5 F",
+                      "brew_time": "5 minutes"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ```
+- DELETE /customer/:id/subscription/:id
+  - Response:
+    - ```
+        {
+          "status": "200 OK"
+          "message": "Subscription deleted successfully"
+          "data": {}
+        }
+      ```
 
 
 ### Status Codes
