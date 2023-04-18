@@ -1,7 +1,9 @@
 class Api::V1::TeasController < ApplicationController
   def create
     tea = Tea.new(tea_params)
-    binding.pry
+    if tea.save
+      render json: TeaSerializer.format_tea(tea), status: 200
+    end
   end
 
   private

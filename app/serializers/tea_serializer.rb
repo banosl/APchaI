@@ -1,5 +1,5 @@
 class TeaSerializer
-  def format_tea(tea)
+  def self.format_tea(tea)
     {
       "data": {
         "type": "tea",
