@@ -8,7 +8,27 @@ RSpec.describe 'GET Customer(s)' do
   end
   describe 'get all customers' do
     it 'returns all customers with their subscriptions' do
-      
+      get '/api/v1/customers'
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      customers = JSON.parse(response.body, symbolize_names: true)
+
+      expect(customers).to have_key(:data)
+    end
+
+  describe 'get customer by id' do
+    it 'returns customer specified' do
+      get "/api/v1/customers/#{customer1.id}"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      customer = JSON.parse(response.body, symbolize_names: true)
+
+      expect(customer).to have_key(:data)
+      expect(customer[:data]).to have_key()
     end
   end
 end
