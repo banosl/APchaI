@@ -123,32 +123,60 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
                 "city": "City Name",
                 "state": "State Name",
                 "zip_code": "12345",
-              "relationships": [ 
-                {          
-                "data": {
-                    "type": "subscription",
-                    "id": "1",
-                    "attributes": {
-                      "title": "subscription title",
-                      "price": "$1.00",
-                      "status": "active",
-                      "frequency": "Monthly"
-                    },
-                    "relationships": {
+              },
+              "relationships": {
+                "active": [ 
+                    {          
                       "data": {
-                        "type": "tea",
+                        "type": "subscription",
                         "id": "1",
                         "attributes": {
-                          "title": "tea name",
-                          "description": "describing the tea",
-                          "temperature": "30.5 F",
-                          "brew_time": "5 minutes"
+                          "title": "subscription title",
+                          "price": "$1.00",
+                          "status": "active",
+                          "frequency": "Monthly"
+                        },
+                        "relationships": {
+                          "data": {
+                            "type": "tea",
+                            "id": "1",
+                            "attributes": {
+                              "title": "tea name",
+                              "description": "describing the tea",
+                              "temperature": "30.5 F",
+                              "brew_time": "5 minutes"
+                            }
                           }
                         }
                       }
                     }
-                  }
-                ]
+                  ],
+                "cancelled": [ 
+                    {          
+                      "data": {
+                        "type": "subscription",
+                        "id": "1",
+                        "attributes": {
+                          "title": "subscription title",
+                          "price": "$1.00",
+                          "status": "active",
+                          "frequency": "Monthly"
+                        },
+                        "relationships": {
+                          "data": {
+                            "type": "tea",
+                            "id": "1",
+                            "attributes": {
+                              "title": "tea name",
+                              "description": "describing the tea",
+                              "temperature": "30.5 F",
+                              "brew_time": "5 minutes"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
               }
             }
           ]
@@ -199,31 +227,28 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
               "address": "123 1st St",
               "city": "City Name",
               "state": "State Name",
-              "zip_code": "12345",
-              "timestamps": {
-                "created_at": "2020-07-21T12:09:00Z",
-                "updated_at": "2020-07-21T12:09:00Z"
-              },
+              "zip_code": "12345"
+            },
             "relationships": [ 
               {          
-              "data": {
-                  "type": "subscription",
-                  "id": "1",
-                  "attributes": {
-                    "title": "subscription title",
-                    "price": "$1.00",
-                    "status": "active",
-                    "frequency": "Monthly"
-                  },
-                  "relationships": {
-                    "data": {
-                      "type": "tea",
-                      "id": "1",
-                      "attributes": {
-                        "title": "tea name",
-                        "description": "describing the tea",
-                        "temperature": "30.5 F",
-                        "brew_time": "5 minutes"
+                "data": {
+                    "type": "subscription",
+                    "id": "1",
+                    "attributes": {
+                      "title": "subscription title",
+                      "price": "$1.00",
+                      "status": "active",
+                      "frequency": "Monthly"
+                    },
+                    "relationships": {
+                      "data": {
+                        "type": "tea",
+                        "id": "1",
+                        "attributes": {
+                          "title": "tea name",
+                          "description": "describing the tea",
+                          "temperature": "30.5 F",
+                          "brew_time": "5 minutes"
                         }
                       }
                     }
@@ -232,7 +257,6 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
               ]
             }
           }
-        }
       ```
 - PATCH /customer/:id
   - Request Body:
@@ -376,11 +400,8 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
               "address": "123 1st St",
               "city": "City Name",
               "state": "State Name",
-              "zip_code": "12345",
-              "timestamps": {
-                "created_at": "2020-07-21T12:09:00Z",
-                "updated_at": "2020-07-21T12:09:00Z"
-              },
+              "zip_code": "12345"
+            }
             "relationships": {          
               "data": {
                 "type": "subscription",
@@ -407,7 +428,6 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
               }
             }
           }
-        }
       ```
 - PATCH /customer/:id/subscriptions/:id
   - Request Body:
@@ -433,11 +453,8 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
               "address": "123 1st St",
               "city": "City Name",
               "state": "State Name",
-              "zip_code": "12345",
-              "timestamps": {
-                "created_at": "2020-07-21T12:09:00Z",
-                "updated_at": "2020-07-21T12:09:00Z"
-              },
+              "zip_code": "12345"
+            }
             "relationships": {          
               "data": {
                 "type": "subscription",
@@ -464,7 +481,6 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
               }
             }
           }
-        }
       ```
 - DELETE /customer/:id/subscription/:id
   - Response:
