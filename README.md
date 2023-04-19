@@ -482,9 +482,9 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
 | Code    | Status    | Description   |
 | :---    | :---      | :---          |
 | 200     |    OK     |               |
+| 400     | Bad Request | When creating an object and an attribute is missing |
 | 404     | Not Found |               |
-|     |           |               |
-|         |           |               |
+| 409     | Conflict  | When trying to create a user with an email already in use  |
 
 Root directory: 'http://localhost:3000/api/v1'
 

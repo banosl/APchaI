@@ -39,7 +39,7 @@ RSpec.describe 'POST Customer' do
       expect(customer[:data][:attributes][:zipcode]).to eq(80204)
     end
 
-    it 'sends an error message when an email is missing' do
+    it 'sends an error message when an attribute is missing' do
       headers = { "CONTENT_TYPE" => "application/json" }
 
       post "/api/v1/customers", headers: headers, params: JSON.generate({first_name: "Leo",
