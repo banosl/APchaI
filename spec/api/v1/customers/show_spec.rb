@@ -50,5 +50,16 @@ RSpec.describe 'show customer' do
 
       expect(customer[:data][:relationships][:cancelled]).to eq([])
     end
+
+    it 'returns an error message if the customer is not found' do
+      get "/api/v1/customers/5"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(message[:errors]).to eq("Customer does not exist")
+    end
   end
 end

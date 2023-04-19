@@ -20,6 +20,8 @@ class Api::V1::CustomersController < ApplicationController
     customer = Customer.find_by(id: params[:id])
     if Customer.find_by(id: params[:id])
       render json: CustomerSerializer.format_customers_subscriptions(customer), status: 200
+    else
+      render json: {"errors": "Customer does not exist"}, status: 404
     end
   end
 
