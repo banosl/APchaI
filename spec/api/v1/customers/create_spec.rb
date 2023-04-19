@@ -5,7 +5,7 @@ RSpec.describe 'POST Customer' do
     it 'succesfully creates a customer' do
       headers = { "CONTENT_TYPE" => "application/json" }
 
-      post "/api/v1/teas", headers: headers, params: JSON.generate({first_name: "Leo",
+      post "/api/v1/customers", headers: headers, params: JSON.generate({first_name: "Leo",
                                                                     last_name: "Martinez",
                                                                     email: "leo@email.com",
                                                                     address: "123 1st St",
