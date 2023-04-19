@@ -11,7 +11,7 @@ class CustomerSerializer
           "address": customer[:address],
           "city": customer[:city],
           "state": customer[:state],
-          "zip_code": customer[:zipcode]
+          "zipcode": customer[:zipcode]
         }
       }
     }

@@ -36,7 +36,7 @@ RSpec.describe 'POST Customer' do
       expect(customer[:data][:attributes][:address]).to eq("123 1st St")
       expect(customer[:data][:attributes][:city]).to eq("Denver")
       expect(customer[:data][:attributes][:state]).to eq("Colorado")
-      expect(customer[:data][:attributes][:zipcode]).to eq("80204")
+      expect(customer[:data][:attributes][:zipcode]).to eq(80204)
     end
 
     it 'sends an error message when one of the customer attributes is missing'
