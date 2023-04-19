@@ -6,12 +6,12 @@ RSpec.describe 'POST Customer' do
       headers = { "CONTENT_TYPE" => "application/json" }
 
       post "/api/v1/customers", headers: headers, params: JSON.generate({first_name: "Leo",
-                                                                    last_name: "Martinez",
-                                                                    email: "leo@email.com",
-                                                                    address: "123 1st St",
-                                                                    city: "Denver",
-                                                                    state: "Colorado",
-                                                                    zipcode: 80204})
+                                                                         last_name: "Martinez",
+                                                                         email: "leo@email.com",
+                                                                         address: "123 1st St",
+                                                                         city: "Denver",
+                                                                         state: "Colorado",
+                                                                         zipcode: 80204})
 
       expect(response).to be_successful
       expect(response.status).to eq(201)
@@ -43,11 +43,11 @@ RSpec.describe 'POST Customer' do
       headers = { "CONTENT_TYPE" => "application/json" }
 
       post "/api/v1/customers", headers: headers, params: JSON.generate({first_name: "Leo",
-                                                                    last_name: "Martinez",
-                                                                    address: "123 1st St",
-                                                                    city: "Denver",
-                                                                    state: "Colorado",
-                                                                    zipcode: 80204})
+                                                                         last_name: "Martinez",
+                                                                         address: "123 1st St",
+                                                                         city: "Denver",
+                                                                         state: "Colorado",
+                                                                         zipcode: 80204})
 
       expect(response).to_not be_successful
       expect(response.status).to eq(400)
@@ -62,12 +62,12 @@ RSpec.describe 'POST Customer' do
       headers = { "CONTENT_TYPE" => "application/json" }
 
       post "/api/v1/customers", headers: headers, params: JSON.generate({first_name: "Leo",
-                                                                    last_name: "Martinez",
-                                                                    email: "leo@email.com",
-                                                                    address: "123 1st St",
-                                                                    city: "Denver",
-                                                                    state: "Colorado",
-                                                                    zipcode: 80204})
+                                                                         last_name: "Martinez",
+                                                                         email: "leo@email.com",
+                                                                         address: "123 1st St",
+                                                                         city: "Denver",
+                                                                         state: "Colorado",
+                                                                         zipcode: 80204})
 
       expect(response).to_not be_successful
       expect(response.status).to eq(409)
