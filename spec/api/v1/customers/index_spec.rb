@@ -15,24 +15,25 @@ RSpec.describe 'GET Customers' do
       expect(response.status).to eq(200)
 
       customers = JSON.parse(response.body, symbolize_names: true)
+     
+      expect(customers).to have_key(:data)
 
-      customers.each do |customer|
-        expect(customer).to have_key(:data)
-        expect(customer[:data]).to have_key(:type)
-        expect(customer[:data]).to have_key(:attributes)
-        expect(customer[:data]).to have_key(:relationships)
+      customers[:data].each do |customer|
+        expect(customer).to have_key(:type)
+        expect(customer).to have_key(:attributes)
+        expect(customer).to have_key(:relationships)
         
-        expect(customer[:data]).to have_key(:id)
-        expect(customer[:data][:attributes]).to have_key(:first_name)
-        expect(customer[:data][:attributes]).to have_key(:last_name)
-        expect(customer[:data][:attributes]).to have_key(:email)
-        expect(customer[:data][:attributes]).to have_key(:address)
-        expect(customer[:data][:attributes]).to have_key(:city)
-        expect(customer[:data][:attributes]).to have_key(:state)
-        expect(customer[:data][:attributes]).to have_key(:zipcode)
+        expect(customer).to have_key(:id)
+        expect(customer[:attributes]).to have_key(:first_name)
+        expect(customer[:attributes]).to have_key(:last_name)
+        expect(customer[:attributes]).to have_key(:email)
+        expect(customer[:attributes]).to have_key(:address)
+        expect(customer[:attributes]).to have_key(:city)
+        expect(customer[:attributes]).to have_key(:state)
+        expect(customer[:attributes]).to have_key(:zipcode)
 
-        expect(customer[:data][:relationships]).to have_key(:active)
-        expect(customer[:data][:relationships]).to have_key(:cancelled)
+        expect(customer[:relationships]).to have_key(:active)
+        expect(customer[:relationships]).to have_key(:cancelled)
       end
     end
   end
