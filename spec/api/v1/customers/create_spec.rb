@@ -57,6 +57,25 @@ RSpec.describe 'POST Customer' do
       expect(message[:errors]).to eq("Email can't be blank")
     end
 
-    it 'sends an error message when the email is already in use'
+    it 'sends an error message when the email is already in use' do
+      customer1 = Customer.create({first_name: "Leo", last_name: "Jacobson", email: "leo@email.com", address: "124 1st St", city: "Denver", state: "Colorado", zipcode: 80204})
+      headers = { "CONTENT_TYPE" => "application/json" }
+
+      post "/api/v1/customers", headers: headers, params: JSON.generate({first_name: "Leo",
+                                                                    last_name: "Martinez",
+                                                                    email: "leo@email.com",
+                                                                    address: "123 1st St",
+                                                                    city: "Denver",
+                                                                    state: "Colorado",
+                                                                    zipcode: 80204})
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(409)
+
+      message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(message).to have_key(:errors)
+      expect(message[:errors]).to eq("Conflict, email already in use")
+    end
   end
 end
