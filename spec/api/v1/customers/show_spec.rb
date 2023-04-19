@@ -5,9 +5,11 @@ RSpec.describe 'show customer' do
     @customer1 = Customer.create(first_name: "Bob", last_name: "Wooper", email: "bwooper@gmail.com", address: "456 2nd St.", city: "Seattle", state: "WA", zipcode: 98002)
     @customer2 = Customer.create(first_name: "Madison", last_name: "Goldeen", email: "its_goldeen@gmail.com", address: "743 12th Ave", city: "Denver", state: "CO", zipcode: 80204)
     @customer3 = Customer.create(first_name: "Sandra", last_name: "Garcia", email: "garcia@gmail.com", address: "321 Maple St", city: "Denver", state: "CO", zipcode: 80211)
+    @tea1 = Tea.create(title: "Hibiscus Tea", description: "Hibiscus tea is a herbal tea made as an infusion from crimson or deep magenta-colored calyces (sepals) of the roselle (Hibiscus sabdariffa) flower. It is consumed both hot and cold. It has a tart, cranberry-like flavor.", temperature: 200.0, brew_time: "3-5 Minutes")
+    @subscription1 = @customer1.subscriptions.create(title: "Hibiscus Tea Subscription", price: 15.50, status: "active", frequency: "Once a month", tea_id: @tea1.id)
   end
 
-  describe 'get customer by id' do
+  describe 'get customer by id and shows subscriptions' do
     it 'returns customer specified' do
       get "/api/v1/customers/#{@customer1.id}"
 
@@ -32,6 +34,21 @@ RSpec.describe 'show customer' do
 
       expect(customer[:data][:relationships]).to have_key(:active)
       expect(customer[:data][:relationships]).to have_key(:cancelled)
+
+      customer[:data][:relationships][:active].each do |sub|
+        expect(sub).to have_key(:data)
+        expect(sub[:data]).to have_key(:type)
+        expect(sub[:data]).to have_key(:attributes)
+        expect(sub[:data]).to have_key(:relationships)
+        expect(sub[:data][:attributes]).to have_key(:title)
+        expect(sub[:data][:attributes]).to have_key(:price)
+        expect(sub[:data][:attributes]).to have_key(:status)
+        expect(sub[:data][:attributes]).to have_key(:frequency)
+        expect(sub[:data][:relationships]).to have_key(:data)
+        expect(sub[:data][:relationships][:data]).to have_key(:type)
+      end
+
+      expect(customer[:data][:relationships][:cancelled]).to eq([])
     end
   end
 end
