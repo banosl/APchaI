@@ -123,10 +123,6 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
                 "city": "City Name",
                 "state": "State Name",
                 "zip_code": "12345",
-                "timestamps": {
-                  "created_at": "2020-07-21T12:09:00Z",
-                  "updated_at": "2020-07-21T12:09:00Z"
-                },
               "relationships": [ 
                 {          
                 "data": {
@@ -185,10 +181,6 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
               "city": "City Name",
               "state": "State Name",
               "zip_code": "12345",
-              "timestamps": {
-                "created_at": "2020-07-21T12:09:00Z",
-                "updated_at": "2020-07-21T12:09:00Z"
-              }
             }
           }
         }
@@ -220,10 +212,6 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
               "city": "City Name",
               "state": "State Name",
               "zip_code": "12345",
-              "timestamps": {
-                "created_at": "2020-07-21T12:09:00Z",
-                "updated_at": "2020-07-21T12:09:00Z"
-              }
             }
           }
         }
