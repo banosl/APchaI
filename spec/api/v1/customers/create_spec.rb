@@ -39,7 +39,23 @@ RSpec.describe 'POST Customer' do
       expect(customer[:data][:attributes][:zipcode]).to eq(80204)
     end
 
-    it 'sends an error message when one of the customer attributes is missing'
+    it 'sends an error message when an email is missing' do
+      headers = { "CONTENT_TYPE" => "application/json" }
+
+      post "/api/v1/customers", headers: headers, params: JSON.generate({first_name: "Leo",
+                                                                    last_name: "Martinez",
+                                                                    address: "123 1st St",
+                                                                    city: "Denver",
+                                                                    state: "Colorado",
+                                                                    zipcode: 80204})
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+
+      message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(message[:errors]).to eq("Email can't be blank")
+    end
 
     it 'sends an error message when the email is already in use'
   end
