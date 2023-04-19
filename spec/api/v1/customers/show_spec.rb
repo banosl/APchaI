@@ -30,7 +30,8 @@ RSpec.describe 'show customer' do
       expect(customer[:data][:attributes]).to have_key(:state)
       expect(customer[:data][:attributes]).to have_key(:zipcode)
 
-      expect(customer[:data][:attributes][:relationships].to be_a(Array))
+      expect(customer[:data][:relationships]).to have_key(:active)
+      expect(customer[:data][:relationships]).to have_key(:cancelled)
     end
   end
 end
