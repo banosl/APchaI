@@ -3,7 +3,7 @@ class Api::V1::CustomersController < ApplicationController
     customer = Customer.new(customer_params)
 
     if customer.save
-      render json: CustomerSerializer.format_new_customer(customer), status: 201
+      render json: {"data": CustomerSerializer.format_customer(customer)}, status: 201
     elsif Customer.find_by(email: customer_params[:email])
       render json: {"errors": "Conflict, email already in use"}, status: 409 
     else

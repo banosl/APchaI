@@ -18,22 +18,22 @@ RSpec.describe "POST customer subscription" do
                                                                                                         frequency: "Monthly", 
                                                                                                         tea_name: "Hibiscus Tea"})
 
-      expect(response).to be(be_successful)
+      expect(response).to be_successful
       expect(response.status).to eq(201)
 
       package = JSON.parse(response.body, symbolize_names: true)
 
       expect(package).to have_key(:data)
-      expect(package[:data]).to have_key[:relationships]
-      expect(package[:data][:relationships][:data]).to have_key(:type)
+      expect(package[:data]).to have_key(:relationships)
+      expect(package[:data]).to have_key(:type)
+      expect(package[:data]).to have_key(:attributes)
+      expect(package[:data]).to have_key(:relationships)
+      expect(package[:data][:attributes]).to have_key(:title)
       expect(package[:data][:relationships][:data]).to have_key(:attributes)
-      expect(package[:data][:relationships][:data]).to have_key(:relationships)
-      expect(package[:data][:relationships][:data][:attributes]).to have_key(:title)
-      expect(package[:data][:relationships][:data][:relationships]).to have_key(:attributes)
-      expect(package[:data][:relationships][:data][:relationships][:attributes]).to have_key(:description)
+      expect(package[:data][:relationships][:data][:attributes]).to have_key(:description)
 
-      expect(package[:data][:relationships][:data][:relationships][:type]).to eq("subscription")
-      expect(package[:data][:relationships][:data][:relationships][:data][:type]).to eq("tea")
+      expect(package[:data][:type]).to eq("subscription")
+      expect(package[:data][:relationships][:data][:type]).to eq("tea")
 
     end
 

@@ -390,35 +390,29 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
   - Response:
     - ```
         {
-          data: {
-            "type": "customer",
+          "data": {
+            "type": "subscription",
             "id": "1",
-            "relationships": {          
+            "attributes": {
+              "title": "subscription title",
+              "price": "$1.00",
+              "status": "active",
+              "frequency": "Monthly"
+            },
+            "relationships": {
               "data": {
-                "type": "subscription",
+                "type": "tea",
                 "id": "1",
                 "attributes": {
-                  "title": "subscription title",
-                  "price": "$1.00",
-                  "status": "active",
-                  "frequency": "Monthly"
-                },
-                "relationships": {
-                  "data": {
-                    "type": "tea",
-                    "id": "1",
-                    "attributes": {
-                      "title": "tea name",
-                      "description": "describing the tea",
-                      "temperature": "30.5 F",
-                      "brew_time": "5 minutes"
-                      }
-                    }
-                  }
+                  "title": "tea name",
+                  "description": "describing the tea",
+                  "temperature": "30.5 F",
+                  "brew_time": "5 minutes"
                 }
               }
             }
           }
+        }
       ```
 - PATCH /customer/:id/subscriptions/:id
   - Request Body:
@@ -434,44 +428,29 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
   - Response:
     - ```
         {
-          data: {
-            "type": "customer",
+          "data": {
+            "type": "subscription",
             "id": "1",
             "attributes": {
-              "first_name": "name",
-              "last_name": "name",
-              "email": "name@email",
-              "address": "123 1st St",
-              "city": "City Name",
-              "state": "State Name",
-              "zip_code": "12345"
-            }
-            "relationships": {          
+              "title": "subscription title",
+              "price": "$1.00",
+              "status": "active",
+              "frequency": "Monthly"
+            },
+            "relationships": {
               "data": {
-                "type": "subscription",
+                "type": "tea",
                 "id": "1",
                 "attributes": {
-                  "title": "subscription title",
-                  "price": "$1.00",
-                  "status": "active",
-                  "frequency": "Monthly"
-                },
-                "relationships": {
-                  "data": {
-                    "type": "tea",
-                    "id": "1",
-                    "attributes": {
-                      "title": "tea name",
-                      "description": "describing the tea",
-                      "temperature": "30.5 F",
-                      "brew_time": "5 minutes"
-                      }
-                    }
-                  }
+                  "title": "tea name",
+                  "description": "describing the tea",
+                  "temperature": "30.5 F",
+                  "brew_time": "5 minutes"
                 }
               }
             }
           }
+        }
       ```
 - DELETE /customer/:id/subscription/:id
   - Response:
