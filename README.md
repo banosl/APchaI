@@ -258,7 +258,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
             }
           }
       ```
-- PATCH /customer/:id
+- (NOT IMPLEMENTED YET) PATCH /customer/:id
   - Request Body:
     - ```
       {
@@ -289,7 +289,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
           }
         }
       ```
-- DELETE /customer/:id
+- (NOT IMPLEMENTED YET) DELETE /customer/:id
   - Response:
     - ```
         {
@@ -298,7 +298,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
           "data": {}
         }
       ```
-- GET /teas
+- (NOT IMPLEMENTED YET) GET /teas
   - Response:
     ```
       {
@@ -341,7 +341,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
         }
       }
     ```
-- PATCH /tea/:id
+- (NOT IMPLEMENTED YET) PATCH /tea/:id
   - Request Body:
     - ```
         {
@@ -367,7 +367,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
         ]
       }
     ```
-- DELETE /tea/:id
+- (NOT IMPLEMENTED YET) DELETE /tea/:id
   - Response:
     - ```
         {
@@ -390,44 +390,29 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
   - Response:
     - ```
         {
-          data: {
-            "type": "customer",
+          "data": {
+            "type": "subscription",
             "id": "1",
             "attributes": {
-              "first_name": "name",
-              "last_name": "name",
-              "email": "name@email",
-              "address": "123 1st St",
-              "city": "City Name",
-              "state": "State Name",
-              "zip_code": "12345"
-            }
-            "relationships": {          
+              "title": "subscription title",
+              "price": "$1.00",
+              "status": "active",
+              "frequency": "Monthly"
+            },
+            "relationships": {
               "data": {
-                "type": "subscription",
+                "type": "tea",
                 "id": "1",
                 "attributes": {
-                  "title": "subscription title",
-                  "price": "$1.00",
-                  "status": "active",
-                  "frequency": "Monthly"
-                },
-                "relationships": {
-                  "data": {
-                    "type": "tea",
-                    "id": "1",
-                    "attributes": {
-                      "title": "tea name",
-                      "description": "describing the tea",
-                      "temperature": "30.5 F",
-                      "brew_time": "5 minutes"
-                      }
-                    }
-                  }
+                  "title": "tea name",
+                  "description": "describing the tea",
+                  "temperature": "30.5 F",
+                  "brew_time": "5 minutes"
                 }
               }
             }
           }
+        }
       ```
 - PATCH /customer/:id/subscriptions/:id
   - Request Body:
@@ -443,61 +428,37 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
   - Response:
     - ```
         {
-          data: {
-            "type": "customer",
+          "data": {
+            "type": "subscription",
             "id": "1",
             "attributes": {
-              "first_name": "name",
-              "last_name": "name",
-              "email": "name@email",
-              "address": "123 1st St",
-              "city": "City Name",
-              "state": "State Name",
-              "zip_code": "12345"
-            }
-            "relationships": {          
+              "title": "subscription title",
+              "price": "$1.00",
+              "status": "active",
+              "frequency": "Monthly"
+            },
+            "relationships": {
               "data": {
-                "type": "subscription",
+                "type": "tea",
                 "id": "1",
                 "attributes": {
-                  "title": "subscription title",
-                  "price": "$1.00",
-                  "status": "active",
-                  "frequency": "Monthly"
-                },
-                "relationships": {
-                  "data": {
-                    "type": "tea",
-                    "id": "1",
-                    "attributes": {
-                      "title": "tea name",
-                      "description": "describing the tea",
-                      "temperature": "30.5 F",
-                      "brew_time": "5 minutes"
-                      }
-                    }
-                  }
+                  "title": "tea name",
+                  "description": "describing the tea",
+                  "temperature": "30.5 F",
+                  "brew_time": "5 minutes"
                 }
               }
             }
           }
-      ```
-- DELETE /customer/:id/subscription/:id
-  - Response:
-    - ```
-        {
-          "status": "200 OK"
-          "message": "Subscription deleted successfully"
-          "data": {}
         }
       ```
-
 
 ### Status Codes
 
 | Code    | Status    | Description   |
 | :---    | :---      | :---          |
 | 200     |    OK     |               |
+| 201     | Created   | Record was created successfully |
 | 400     | Bad Request | When creating an object and an attribute is missing |
 | 404     | Not Found |               |
 | 409     | Conflict  | When trying to create a user with an email already in use  |
