@@ -104,9 +104,13 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
 
 ## Usage
 
+[Check out the Postman for examples!](https://www.postman.com/martian-crescent-372628/workspace/leo-s-postman-projects/collection/26533215-9d7d4bbb-5fa6-459e-b403-b1703d52898f?action=share&creator=26533215)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Endpoints
+
+Root directory: 'http://localhost:3000/api/v1'
 
 - GET /customers
   - Response:
@@ -123,7 +127,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
                 "address": "123 1st St",
                 "city": "City Name",
                 "state": "State Name",
-                "zip_code": "12345",
+                "zipcode": "12345",
               },
               "relationships": {
                 "active": [ 
@@ -183,7 +187,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
           ]
         }
       ```
-- POST /customer
+- POST /customers
   - Request Body:
     - ```
       {
@@ -193,7 +197,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
         "address": "123 1st St",
         "city": "City Name",
         "state": "State Name",
-        "zip_code": "12345",
+        "zipcode": "12345",
       }
       ```
   - Response:
@@ -209,12 +213,12 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
               "address": "123 1st St",
               "city": "City Name",
               "state": "State Name",
-              "zip_code": "12345",
+              "zipcode": "12345",
             }
           }
         }
       ```
-- GET /customer/:id
+- GET /customers/:id
   - Response:
     - ```
         {
@@ -259,7 +263,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
             }
           }
       ```
-- (NOT IMPLEMENTED YET) PATCH /customer/:id
+- (NOT IMPLEMENTED YET) PATCH /customers/:id
   - Request Body:
     - ```
       {
@@ -269,7 +273,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
         "address": "new address",
         "city": "new City Name",
         "state": "new State Name",
-        "zip_code": "new zip code",
+        "zipcode": "new zip code",
       }
       ```
   - Response:
@@ -285,12 +289,12 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
               "address": "123 1st St",
               "city": "City Name",
               "state": "State Name",
-              "zip_code": "12345",
+              "zipcode": "12345",
             }
           }
         }
       ```
-- (NOT IMPLEMENTED YET) DELETE /customer/:id
+- (NOT IMPLEMENTED YET) DELETE /customers/:id
   - Response:
     - ```
         {
@@ -317,13 +321,13 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
         ]
       }
     ```
-- POST /tea
+- POST /teas
   - Request Body:
     - ```
         {
           "title": "tea name",
           "description": "describing the tea",
-          "temperature": "30.5 F",
+          "temperature": 30.5,
           "brew_time": "5 minutes"
         }
       ```
@@ -342,7 +346,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
         }
       }
     ```
-- (NOT IMPLEMENTED YET) PATCH /tea/:id
+- (NOT IMPLEMENTED YET) PATCH /teas/:id
   - Request Body:
     - ```
         {
@@ -368,7 +372,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
         ]
       }
     ```
-- (NOT IMPLEMENTED YET) DELETE /tea/:id
+- (NOT IMPLEMENTED YET) DELETE /teas/:id
   - Response:
     - ```
         {
@@ -377,12 +381,12 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
           "data": {}
         }
       ```
-- POST /customer/:id/subscriptions
+- POST /customers/:id/subscriptions
   - Request Body:
     - ```
         {
           "title": "subscription title",
-          "price": "$1.00",
+          "price": 1.00,
           "status": "active",
           "frequency": "Monthly"
           "tea_name": "Tea selection"
@@ -415,7 +419,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
           }
         }
       ```
-- PATCH /customer/:id/subscriptions/:id
+- PATCH /customers/:id/subscriptions/:id
   - Request Body:
     - ```
         {
@@ -463,9 +467,6 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
 | 400     | Bad Request | When creating an object and an attribute is missing |
 | 404     | Not Found |               |
 | 409     | Conflict  | When trying to create a user with an email already in use  |
-
-Root directory: 'http://localhost:3000/api/v1'
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
