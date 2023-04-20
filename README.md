@@ -97,7 +97,8 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
 ## Schema
 <center>
 
-![Screen Shot 2023-04-18 at 4 23 36 PM](https://user-images.githubusercontent.com/111591731/232918492-d2fb4d3a-8bc1-4279-b2cb-ed6844ffb8ba.png)
+<img width="823" alt="Screen Shot 2023-04-19 at 7 52 09 PM" src="https://user-images.githubusercontent.com/111591731/233237550-8f1da54e-e3ed-4a36-bfa0-fbb4e9dcdb5e.png">
+
 
 </center>
 
