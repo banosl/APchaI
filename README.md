@@ -393,15 +393,6 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
           data: {
             "type": "customer",
             "id": "1",
-            "attributes": {
-              "first_name": "name",
-              "last_name": "name",
-              "email": "name@email",
-              "address": "123 1st St",
-              "city": "City Name",
-              "state": "State Name",
-              "zip_code": "12345"
-            }
             "relationships": {          
               "data": {
                 "type": "subscription",
@@ -498,6 +489,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
 | Code    | Status    | Description   |
 | :---    | :---      | :---          |
 | 200     |    OK     |               |
+| 201     | Created   | Record was created successfully |
 | 400     | Bad Request | When creating an object and an attribute is missing |
 | 404     | Not Found |               |
 | 409     | Conflict  | When trying to create a user with an email already in use  |
