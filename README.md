@@ -258,7 +258,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
             }
           }
       ```
-- PATCH /customer/:id
+- (NOT IMPLEMENTED YET) PATCH /customer/:id
   - Request Body:
     - ```
       {
@@ -289,7 +289,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
           }
         }
       ```
-- DELETE /customer/:id
+- (NOT IMPLEMENTED YET) DELETE /customer/:id
   - Response:
     - ```
         {
@@ -298,7 +298,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
           "data": {}
         }
       ```
-- GET /teas
+- (NOT IMPLEMENTED YET) GET /teas
   - Response:
     ```
       {
@@ -341,7 +341,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
         }
       }
     ```
-- PATCH /tea/:id
+- (NOT IMPLEMENTED YET) PATCH /tea/:id
   - Request Body:
     - ```
         {
@@ -367,7 +367,7 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
         ]
       }
     ```
-- DELETE /tea/:id
+- (NOT IMPLEMENTED YET) DELETE /tea/:id
   - Response:
     - ```
         {
@@ -452,16 +452,6 @@ APchaI is a a RESTful API service that manages a postgres database for a front e
           }
         }
       ```
-- DELETE /customer/:id/subscription/:id
-  - Response:
-    - ```
-        {
-          "status": "200 OK"
-          "message": "Subscription deleted successfully"
-          "data": {}
-        }
-      ```
-
 
 ### Status Codes
 
