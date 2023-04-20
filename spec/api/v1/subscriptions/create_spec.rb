@@ -53,6 +53,20 @@ RSpec.describe "POST customer subscription" do
       expect(message[:errors]).to eq("Customer does not exist")
     end
 
-    it "returns an error message if the request is missing an attribute for a subscription"
+    it "returns an error message if the request is missing an attribute for a subscription" do
+      headers = { "CONTENT_TYPE" => "application/json" }
+
+      post "/api/v1/customers/#{@customer1.id}/subscriptions", headers: headers, params: JSON.generate({title: "Hibiscus Tea Subscription", 
+                                                                                                        price: 15.00, 
+                                                                                                        status: "active", 
+                                                                                                        tea_name: "Hibiscus Tea"})
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+
+      message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(message[:errors]).to eq("Frequency can't be blank")
+    end
   end
 end
