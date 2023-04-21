@@ -464,14 +464,13 @@ Root directory: 'http://localhost:3000/api/v1'
 | :---    | :---      | :---          |
 | 200     |    OK     |               |
 | 201     | Created   | Record was created successfully |
-| 400     | Bad Request | When creating an object and an attribute is missing |
+| 400     | Bad Request | When creating an object and an attribute is missing or an incorrect value was given|
 | 404     | Not Found |               |
 | 409     | Conflict  | When trying to create a user with an email already in use  |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
-## Developer
 <center>
 
   <img src="https://avatars.githubusercontent.com/u/111591731?v=4" alt="Profile" width="80" height="80"><br>

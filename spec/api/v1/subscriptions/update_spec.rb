@@ -23,13 +23,17 @@ RSpec.describe "PATCH subscription" do
       expect(package[:data][:attributes][:status]).to eq("cancelled")
     end
 
-    xit 'returns an error if status isnt either active or cancelled' do
+    it 'returns an error if status isnt either active or cancelled' do
       headers = { "CONTENT_TYPE" => "application/json" }
 
       patch "/api/v1/customers/#{@customer1.id}/subscriptions/#{@subscription1.id}", headers: headers, params: JSON.generate(status: "apple pie")
 
       expect(response).to_not be_successful
-      expect(response.status).to eq(200)
+      expect(response.status).to eq(400)
+
+      message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(message[:errors]).to eq("'apple pie' is not a valid status")
     end
   end
 end
