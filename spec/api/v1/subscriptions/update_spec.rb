@@ -32,7 +32,7 @@ RSpec.describe "PATCH subscription" do
       expect(response.status).to eq(400)
 
       message = JSON.parse(response.body, symbolize_names: true)
-binding.pry
+
       expect(message[:errors]).to eq("'apple pie' is not a valid status")
     end
   end

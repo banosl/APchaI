@@ -32,37 +32,11 @@ class CustomerSerializer
       "relationships": {
         "active":
         @active.map do |subscription|
-          { 
-            "data": {
-              "type": "subscription",
-              "id": subscription[:id],
-              "attributes": {
-                "title": subscription[:title],
-                "price": subscription[:price],
-                "status": subscription[:status],
-                "frequency": subscription[:frequency]
-              },
-              "relationships":
-              TeaSerializer.format_tea(subscription.tea)
-            }
-          }
+          SubscriptionSerializer.format_subscription(subscription)
         end,
         "cancelled":
         @cancelled.map do |subscription|
-          { 
-            "data": {
-              "type": "subscription",
-              "id": subscription[:id],
-              "attributes": {
-                "title": subscription[:title],
-                "price": subscription[:price],
-                "status": subscription[:status],
-                "frequency": subscription[:frequency]
-              },
-              "relationships":
-              TeaSerializer.format_tea(subscription.tea)
-            }
-          }
+          SubscriptionSerializer.format_subscription(subscription)
         end
       }
     }
